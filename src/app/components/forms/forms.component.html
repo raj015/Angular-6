@@ -1,0 +1,29 @@
+<div style="margin-top: 40px;" class="container">
+<form ngNoForm>
+  <div class="form-group">
+    <label for="fName">First Name:</label>
+    <input [(ngModel)]='fName' type="text" class="form-control" id="fName">
+  </div>
+  <div class="form-group">
+    <label for="lName">Last Name:</label>
+    <input [(ngModel)]="lName" type="text" class="form-control" id="lName">
+  </div>
+  <div class="form-group">
+    <label for="age">Age:</label>
+    <input [(ngModel)]="age" type="number" class="form-control" id="age">
+  </div>
+  <div class="form-group">
+      <label for="img">Image:</label>
+      <input [(ngModel)]="img" type="text" class="form-control" id="img">
+    </div>
+  </form>
+</div>
+<br>
+<div class="container">
+ 
+  <button type="button" class="btn btn-primary"><h4>{{fName}} {{lName}} <span class="badge badge-light">{{age}}</span></h4><img onerror="this.style.display='none'" *ngIf ="img" class="img img-rounded" src="{{img}}" ></button>        
+  <button type="button" class="btn btn-warning"><h4>{{fName}} {{lName}} <span class="badge badge-light">{{age}}</span></h4><img onerror="this.style.display='none'" *ngIf ="img" class="img img-rounded" src="{{img}}" ></button>        
+  <button type="button" class="btn btn-success"><h4>{{fName}} {{lName}} <span class="badge badge-light">{{age}}</span></h4><img onerror="this.style.display='none'" *ngIf ="img" class="img img-rounded" src="{{img}}" ></button>        
+  
+</div>
+

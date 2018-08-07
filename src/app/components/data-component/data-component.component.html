@@ -1,0 +1,15 @@
+
+<div  class="container ">
+    <div class="ss">
+        <form (submit)="onsubmit()" >
+            <input [(ngModel)]='user' type="text" name="name" id="name">
+            </form>
+          </div>
+          <div >
+            <div class="sss" *ngFor="let member of users">
+              {{member}}
+              </div>
+            </div>
+  
+</div>
+

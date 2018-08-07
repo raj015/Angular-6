@@ -1,0 +1,156 @@
+<div class=" text-center">
+  <button class="large btn btn-danger" (click)='submitted=true;emptyData();callData();'>
+    Show Posts
+  </button>
+</div>
+
+<div [hidden]='!submitted' class="text-center">
+  <br>
+  <button class="btn btn-primary" (click)="wantEdit=false; submitted=false;newPost();postForm.reset();">Add Post</button>
+  <br>
+  <div [hidden]='!wantDelete'>
+    <div class="second mytop d-flex justify-content-center">
+      <div class='text-center alert alert-danger'> Alert..are you sure?
+        <div class="text-center">
+          <button (click)='wantDelete=false;disabled=false' class="btn  btn-danger left ">Cancel</button>&nbsp; &nbsp;
+          <button (click)='deleteItem(itemId);wantDelete=false;disabled=false' class="btn btn-success right ">Sure</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width :100% ;border:solid rebeccapurple 5px;margin-top:10px;" class="lead rounded font-weight-bold" *ngFor="let item of mySubscriber | paginate: { itemsPerPage: 10, currentPage: p }">
+
+    <!-- <div style="border: solid rgb(219, 14, 41) 3px;margin-top: 10px;padding: 5px;" *ngFor="let data of item"> -->
+    <button [disabled]='disabled' (click)='itemId=item.id;wantDelete = true;disabled=true' class="rounded-circle float-right  badge badge-danger">X</button>
+    <button (click)='wantEdit=true;submitted=false;defPost(item);' class="rounded-circle float-right  badge badge-danger ">Edit</button>
+
+    <label class="rounded-circle float-left  badge badge-danger">{{item.id}}</label>
+    <label class="left text text-dark">{{item.title}}</label>
+    <br>
+    <!-- <label class="well  text text-danger large">{{item.body.length>150 ?(item.body | slice:150:item.body.length):item.body}}</label>  -->
+    <div #info class="well text text-danger large">{{item.body | slice:0:100}}
+      <button style="margin-bottom: 4px;" class="btn btn-danger rounded-circle" (click)='info.innerHTML=item.body'>More</button>
+    </div>
+
+    <!-- deleteItem(item.id) -->
+    <!-- </div> -->
+  </div>
+
+  <br>
+  <br>
+  <div class="text-center">
+    <pagination-controls class='marg marg1 ng-margin removecontent-next removecontent-previous my-button my-pagination my-pag '
+      (pageChange)="p = $event"></pagination-controls>
+
+  </div>
+</div>
+
+<!--/////////////////////////Post Form\\\\\\\\\\\\\\\\\\\\\\\\\\  -->
+<div [hidden]='submitted' style="margin-top: 40px;" class="container">
+  <form (ngSubmit)="onsubmit()" #postForm="ngForm">
+    <div class="form-group">
+
+      <label for="userId">User Id:</label>
+      <input min='1' max='10' oninput="validity.valid||(value='');" name='userId' [(ngModel)]='post.userId' type="number" class="form-control"
+        id="userId" required #userId="ngModel">
+      <div *ngIf="userId.invalid && (userId.dirty || userId.touched)" class="alert alert-danger">
+        <div *ngIf="userId.errors.required">
+          User Id is required.
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="title">Post Title:</label>
+      <input name='title' required [(ngModel)]="post.title" type="text" class="form-control" id="title" required minlength='10'
+        #title="ngModel">
+      <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+        <div *ngIf="title.errors.required">
+          Post title is required.
+        </div>
+        <div *ngIf="title.errors.minlength">
+          Post Body should more than 10 letters.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="body">Post Body:</label>
+      <input name="body" required [(ngModel)]="post.body" type="text" class="form-control" id="body" required minlength='10' #body="ngModel">
+      <div *ngIf="body.invalid && (body.dirty || body.touched)" class="alert alert-danger">
+        <div *ngIf="body.errors.required">
+          Post Body is required.
+        </div>
+        <div *ngIf="body.errors.minlength">
+          Post Body should more than 10 letters.
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!postForm.form.valid">Submit</button>
+  </form>
+
+</div>
+
+<style>
+  .my-pagination /deep/ .ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background: #df0e53;
+    border-radius: 10px;
+    color: #fefefe;
+    cursor: default;
+  }
+
+  .my-pag /deep/ .ngx-pagination a:hover,
+  .ngx-pagination button:hover {
+    background: #580823;
+    border-radius: 10px;
+    opacity: 1;
+    text-decoration: none;
+  }
+
+  .my-button /deep/ .ngx-pagination a,
+  .ngx-pagination button {
+    display: block;
+    padding: 0.1875rem 0.625rem;
+    border-radius: 10px;
+    background: #df0e53;
+    color: white;
+    opacity: 0.60;
+
+  }
+
+  .removecontent-next /deep/ .ngx-pagination .pagination-next a::after,
+  .ngx-pagination .pagination-next.disabled::after {
+    content: '';
+    display: inline-block;
+    margin-left: 0rem;
+  }
+
+  .ng-margin /deep/.ngx-pagination li {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    margin-right: 0.5rem;
+    border-radius: 0;
+  }
+
+  .removecontent-previous /deep/ .ngx-pagination .pagination-previous a::before,
+  .ngx-pagination .pagination-previous.disabled::before {
+    content: '';
+    display: inline-block;
+    margin-right: 0rem;
+  }
+
+  .marg /deep/.ngx-pagination {
+    margin-left: -39px;
+    margin-bottom: 1rem;
+    font-size: 15px;
+  }
+
+  .marg1 /deep/[_ngcontent-c1] .ngx-pagination {
+    margin-left: -39px;
+    margin-bottom: 1rem;
+    font-size: 15px;
+  }
+</style>

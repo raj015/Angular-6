@@ -1,0 +1,13 @@
+<div class="text-center">
+  <button class="large btn btn-danger" (click)='loadMe();empty();'>
+    Show Stream
+  </button>
+
+  <div  style="margin-left:40% ; margin-right:40%;width:20%;border: solid rebeccapurple 5px;margin-top: 10px;padding: 5px;"
+    class="lead font-weight-bold" *ngFor="let item of mySubcriber">
+       <label class="left text text-danger">{{item.name}}</label> 
+      <img *ngIf="item.image"  class="rounded-circle  float-right" style="width: 70px;height: 2em;"  src="{{item.image}}">
+
+  </div>
+
+</div>

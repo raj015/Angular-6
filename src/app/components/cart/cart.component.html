@@ -1,0 +1,34 @@
+<div class="container">
+<form (submit)="addItem()"  class="form-inline" >
+  
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="item" class="sr-only">Item</label>
+    <input [(ngModel)]='item' type="text" name="item" class="form-control" id="item" placeholder="Item to Buy">
+  </div>
+  <button  type="submit" class="btn btn-primary mb-2">Buy</button>
+</form>
+<br>
+<div style="font-size: 45px;font-family: 'Arial Narrow Bold', sans-serif"  *ngFor="let item of cart">
+  <span  [ngSwitch]="item.toLowerCase()">
+  <p style="color:red" *ngSwitchCase="'apple'">
+  {{item}}
+  </p>
+  <p style="color:yellow" *ngSwitchCase="'banana'">
+    {{item}}
+  </p>
+  <p style="color:orangered" *ngSwitchCase="'orange'">
+    {{item}}
+  </p>
+  <p style="color:rgb(226, 136, 18)" *ngSwitchCase="'mango'">
+    {{item}}
+  </p>
+  <p style="color:rgb(61, 42, 17)" *ngSwitchCase="'kiwi'">
+    {{item}}
+  </p>
+  <p style="color:green" *ngSwitchDefault>
+    {{item}}
+  </p>
+  </span>
+  
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var first = [{ a: 2 }, { b: 1 }];
+        var second = [{ b: 1 }, { a: 2 }];
+
+function comparer(otherArray){
+  return function(current){
+    return otherArray.filter(function(other){
+      return other.a == current.a && other.b == current.b
+    }).length == 0;
+  }
+}
+var onlyInA = first.filter(comparer(second));
+var onlyInB = second.filter(comparer(first));
+result = (onlyInA.concat(onlyInB)).length===0;
+console.log(result);
+
+    </script>
+</body>
+
+</html>

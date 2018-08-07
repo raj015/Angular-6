@@ -1,0 +1,28 @@
+<!-- <div [hidden]='!wantDelete'>
+  <div class="second mytop d-flex justify-content-center">
+    <div class='text-center alert alert-danger'> Alert..are you sure?
+      <div class="text-center">
+        <button (click)='wantDelete=false;disabled=false' class="btn  btn-danger left ">Cancel</button>&nbsp; &nbsp;
+        <button (click)='deleteItem(itemId);wantDelete=false;disabled=false' class="btn btn-success right ">Sure</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div style="width :100% ;border:solid rebeccapurple 5px;margin-top:10px;" class="lead rounded font-weight-bold" *ngFor="let item of postsData ">
+
+  <!-- <div style="border: solid rgb(219, 14, 41) 3px;margin-top: 10px;padding: 5px;" *ngFor="let data of item"> -->
+  <button [disabled]='disabled' (click)='itemId=item.id;wantDelete = true;disabled=true' class="rounded-circle float-right  badge badge-danger">X</button>
+  <button (click)='wantEdit=true;submitted=false;defPost(item);' class="rounded-circle float-right  badge badge-danger ">Edit</button>
+
+  <label class="rounded-circle float-left  badge badge-danger">{{item.id}}</label>
+  <label class="left text text-dark">{{item.title}}</label>
+  <br>
+  <!-- <label class="well  text text-danger large">{{item.body.length>150 ?(item.body | slice:150:item.body.length):item.body}}</label>  -->
+  <div #info class="well text text-danger large">{{item.body | slice:0:100}}
+    <button style="margin-bottom: 4px;" class="btn btn-danger rounded-circle" (click)='info.innerHTML=item.body'>More</button>
+  </div>
+
+  <!-- deleteItem(item.id) -->
+  <!-- </div> -->
+</div>

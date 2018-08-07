@@ -1,0 +1,24 @@
+<p style="text-align: center">
+  {{hasDeveloper?'Developed By '+ getDeveloper('Muhammad Awadallah'):'All Right Reserved 2018.' }}
+
+  <br>{{date | date:'dd MMMM yyyy'}}
+  <br>
+  <button on-click ='logMe()'>Click Me</button><br>
+  <input type="radio" name="check" (click)='logMe(true)'>True
+  <br><input type="radio" name="check" (click)=logMe(false)>False
+</p>
+<h2>Name:{{oo.name}} Age:{{oo.age}}</h2>
+<input type="radio" name="ch" (click)='checkMe(true)'>True
+<input type="radio" name="ch" checked (click)='checkMe(false)'>False
+<h2>Name:{{customer.name}} Age:{{customer.age}}</h2>
+<!-- <h2>City:{{city}}</h2> -->
+{{changeCity('Cairo')}}<br>
+<h1>{{countries}}</h1><br>
+<h1>{{countries1}}</h1>
+<br>
+<button (click)=warnUser()>Warn Me</button>
+
+
+
+
+  

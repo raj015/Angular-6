@@ -1,0 +1,22 @@
+<div>
+  <button (click) = "sayHello('Muhammad Awadallah')"> Greet </button>
+{{greet}}</div>
+<h1 style="text-align: center"> ({{event}})</h1>
+<button class="btn btn-primary" type="button">Text</button>
+<button class="btn btn-dark" (click) = "getEvent($event)"> Click </button><br><br>
+<button class='btn btn-block' (dblclick) = "getEvent($event)"> Double Click </button><br><br>
+<button class='btn btn-secondary' (mouseover) = "getEvent($event)"> Mouse Over </button><br><br>
+<button class='btn btn-debug' (mouseup) = "getEvent($event)"> Mouse Up </button><br><br>
+<button class="btn btn-outline-warning " (mousedown) = "getEvent($event)"> Mouse Down </button><br><br>
+<button class="btn btn-toolbar" (focus) = "getEvent($event)"> Get Focus </button><br><br>
+<button class="btn btn-link" (blur) = "getEvent($event)"> Not Focus </button><br>
+<p  (copy) = "getEvent($event)"> Got Copied </p><br>
+<input class="alert-heading" type='text' (paste) = "getEvent($event)" (cut)="getEvent($event)" (drop)="getEvent($event)"/><br>
+
+
+
+<p (drag) = "getEvent($event)"> Drag </p><br><br>
+<p (dragover) = "getEvent($event)"> Drag over </p><br><br>
+<input type="text" (keydown) = "getEventwith($event,$event.target.value)">
+<!-- <input type="text" (keydown) = "getEvent($event)" [(ngModel)]='greet'> -->
+

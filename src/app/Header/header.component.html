@@ -1,0 +1,88 @@
+<div class='cs1'>Develolped by {{author}}</div>
+<div>
+    <h3 title="{{Bio}}">The One That try to do some thing in career and still !!! </h3>
+</div>
+<div>
+    <!-- <input type="text" name="pro" [value]="proInfo"(keyup)='proInfo=$event.target.value' placeholder="Your Pro Info.."> -->
+    <input type="text" name="pro" [(ngModel)]='proInfo' placeholder="Your Pro Info..">
+
+</div>
+<div>
+    <h2>{{proInfo}}</h2>
+    <ol start="10">
+        <li *ngFor="let obj of persons">{{obj | json}}</li>
+        <!-- <li>{{persons | json }}</li> -->
+
+    </ol>
+</div>
+<div>
+    <h1>Muhammad Birthdate : {{birthDate | date:getformat()}}</h1>
+    <button (click)='toggleFormat()'>Change Date Format</button>
+    <h1>2.5 to percent : {{2.5|percent}}</h1>
+    <h1>0.5 to percent : {{0.5|percent}}</h1>
+    <h1>245.523433 to decimale : {{245.523433|number:'3.2-5'}}</h1>
+    <h1>10.263782 to Dollar currency : {{10.263782 | currency:'USD':'$':'2.2-4'}}</h1>
+</div>
+<div>
+    <ul>
+        <li *ngFor='let career of carrers ; let i = index '>{{i+1}} {{career | json}}</li>
+    </ul>
+    <ul>
+        <li *ngFor="let career of carrers">{{career.job}}-{{career.time}}-{{career.noJob}}</li>
+    </ul>
+
+</div>
+<div>
+    <h2>Live People</h2>
+    <ul>
+        <h4 class="live" *ngFor="let citizen of citizens">
+            <p *ngIf="citizen.islife">{{citizen.name}}</p>
+        </h4>
+    </ul>
+    <h2>Dead People</h2>
+
+    <ul>
+        <h4 [class.died]=true *ngFor="let citizen of citizens">
+            <p *ngIf="!citizen.islife">{{citizen.name}}</p>
+        </h4>
+    </ul>
+</div>
+<div>
+    <h1 *ngIf="hasnickName ; else original">
+        <h2> Name : {{nickName}}</h2>
+    </h1>
+    <ng-template #original>
+        <h2>Original Name : {{originalName}}</h2>
+    </ng-template>
+</div>
+<div>
+    <!-- <h1>My{{hasnickName?'Name:'+ nickName:'Name:'+originalName}}</h1> -->
+</div>
+<div>
+
+    <span [ngClass]='totalClass' [ngSwitch]="true">
+
+        <ng-container *ngSwitchCase="(degree/400) >0.5 && (degree/400) <.65  ">
+            <h1>Graduate: Pass</h1>
+        </ng-container>
+        <ng-container *ngSwitchCase="(degree/400) >=0.65 && (degree/400) <.75 ">
+            <h1>Graduate: Good</h1>
+        </ng-container>
+        <ng-container *ngSwitchCase="(degree/400) >=0.75 && (degree/400) <.85 ">
+            <h1>Graduate: Very Good</h1>
+        </ng-container>
+        <ng-container *ngSwitchCase="(degree/400) >=0.85 && (degree/400) <=1 ">
+            <h1>Graduate: Excellent</h1>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+            <h1>Fail</h1>
+        </ng-container>
+    </span>
+</div>
+<div>
+    <li *ngFor="let kid of kids">
+        {{kid.name}} <ng-container *ngIf="kid.image ; else def"><br> <img #img src="{{kid.image}}" ></ng-container></li>
+        <ng-template #def>
+            <br> <img #img src="{{noImage}}" >
+        </ng-template>
+</div>

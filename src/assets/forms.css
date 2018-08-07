@@ -1,0 +1,36 @@
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+
+  .first{
+    position: absolute;
+    z-index:1001;
+    }
+    
+.second{
+    position: absolute;
+    z-index:1200;
+    /* min-width:40rem; */
+    /* margin:8px; */
+    /* margin-left:5px; */
+    /* margin-top:60%; */
+    /* margin-bottom:40%; */
+   
+    font-size:32px;
+    /* top: 50px;
+    left: 50px; */
+}
+
+.mytop {
+  position: fixed;
+  top: auto; 
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+

@@ -1,0 +1,6 @@
+<!-- users.html-->
+
+
+  <div *ngFor="let user of users; let i = index;" class="list-group" id="list-tab" role="tablist">
+    <a style="margin:5px;" [class.active]="active === i" (click)="onClick(i);navigate(user.id);" routerLink='userspost' class="list-group-item list-group-item-dark list-group-item-action" id="list-home-list" data-toggle="list"  role="tab" aria-controls="home"><b>{{user.username}}/{{user.name}}</b></a>
+  </div>
