@@ -1,0 +1,23 @@
+----- Send Parameters with Html RouteLink -----
+    ----- First Method but no optional parameters -----
+   1- in app.modue.ts>>>>>>
+    { path: 'posts/:id', component: SecondComponent }
+   2- in first.component.html>>>>>>
+    routerLink='/userspost/{{id}}' 
+                or
+    [routerLink]="['/userspost',id]"            
+   3- in userspost.component.ts>>>>>>
+   id:number; and use it 
+
+    ----- Second Method but with optional parameters -----
+   1- in first.component.html>>>>>>
+     [routerLink]="['/userspost',{id:{{user.id}},name:{{user.name}}}]"            
+   2- in userspost.component.ts>>>>>>
+   id:number;name:string and use it 
+
+    ----- Third Method with Query parameters -----
+   1- in first.component.html>>>>>>
+     [routerLink]="['/userspost']" [queryParams]="{id:1,name:'Muhammad'}"
+   2- in userspost.component.ts>>>>>>
+   id:number;name:string and use it 
+   
