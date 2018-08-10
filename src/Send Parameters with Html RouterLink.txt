@@ -9,15 +9,30 @@
    3- in userspost.component.ts>>>>>>
    id:number; and use it 
 
-    ----- Second Method but with optional parameters -----
+    ----- Second Method but with optional parameters -----Goooooooooood
    1- in first.component.html>>>>>>
-     [routerLink]="['/userspost',{id:{{user.id}},name:{{user.name}}}]"            
+     [routerLink]="['/userspost',{id:user.id,name:user.name}]"            
    2- in userspost.component.ts>>>>>>
    id:number;name:string and use it 
 
-    ----- Third Method with Query parameters -----
+   to get parameters we use
+   Get Parameters as object parameters
+    this._route.params.subscribe(params => {
+    this.id = params['id']});
+
+    ----- Third Method with Query parameters ----- Goooooooooood
    1- in first.component.html>>>>>>
      [routerLink]="['/userspost']" [queryParams]="{id:1,name:'Muhammad'}"
    2- in userspost.component.ts>>>>>>
    id:number;name:string and use it 
+   
+   To get parameters we use 
+  
+  constructor(private call: CallApiService, private router: Router,private _route:ActivatedRoute) { }
+  ngOnInit() {
+    this.getPosts();
+    Get parameters as  QueryParams 
+    this.id = this._route.snapshot.queryParams["id"];
+  }
+
    
