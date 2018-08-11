@@ -4,7 +4,7 @@
 this.myRouter.navigate(['/usersPost',{id:1,name:'amir'}]);
 
 -----------First Method -----------Send queryParams------
-this.myRouter.navigate(['/usersPost'],{queryParams:{id:1,name:'amir'}}]);
+this.myRouter.navigate(['/usersPost'],{queryParams:{id:1,name:'amir'}});
 
 -----------Third Method ---------Send Required Params--------
 this.myRouter.navigate(['/usersPost',this.id]);

@@ -17,12 +17,12 @@ export class UsersPostsComponent implements OnInit {
   wantDelete = false;
   disabled = false;
   wantEdit = false;
-  id:number=1;
+  id:number;
 
   constructor(private call: CallApiService, private router: Router,private _route:ActivatedRoute) { }
 
   ngOnInit() {
-
+    this.id = this._route.snapshot.queryParams["id"];
     this.getPosts();
     ////// Get Parameters as object parameters
     // this._route.params.subscribe(params => {
@@ -30,7 +30,7 @@ export class UsersPostsComponent implements OnInit {
      
     // });
     ///// Get parameters as  QueryParams 
-    this.id = this._route.snapshot.queryParams["id"];
+    
 
   }
 
@@ -51,5 +51,7 @@ export class UsersPostsComponent implements OnInit {
   getAllPosts() {
     this.call.getPosts().subscribe(next => { this.postsData = next })
   }
+
+  
 
 }

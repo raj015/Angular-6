@@ -44,8 +44,11 @@ export class FirstComponent implements OnInit {
       this.router.navigate(['/userspost']);
     }
 
-   
 
+  }
+
+  navigateMe(id){
+    this.router.navigate(['userspost'],{queryParams:{id:id}});
   }
 
 }
